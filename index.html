@@ -5,11 +5,16 @@
 <link rel="icon" type="image/x-icon" href="favicon.ico">
 
 <style>
+@font-face {
+  font-family: myFonts;
+  src: url(coneria-pixel.ttf);
+}
+
 h1,h2{
 color: rgb(255, 255, 255);
 text-align: center;
-font-family:Arial, Helvetica, sans-serif;
-font-size: 21px;
+font-family:myFonts;
+font-size: 15px;
 font-weight: normal;
 background-image: linear-gradient(rgb(0, 38, 255),#0b0466);
 border: solid;
@@ -23,9 +28,9 @@ body{
     background-attachment: fixed;
 }
 label{
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: myFonts;
     font-size: 15px;
-    font-weight: bold;
+    font-weight: normal;
     color:white;
 
 display: inline-block;
@@ -34,12 +39,15 @@ display: inline-block;
 }
 
 input{
+    color: white;
     text-align: right;
-    font-size: large;
+    font-family: myFonts;
+    width:125px;
+    background-color: #ffffff1e;
 }
 
 .calc{
-    font-family:Arial, Helvetica, sans-serif;
+    font-family: myFonts;
     font-size: 25px;
     text-align:center;
     color:white;
@@ -55,9 +63,21 @@ input{
 
 .gobbie{
     color:white;
+    font-family: myFonts;
     display:grid;
     grid-template-columns: auto auto;
     justify-content: center;
+}
+.footer{
+    color: white;
+    font-family: myFonts;
+    font-size: 10px;
+    font-weight: normal;
+    position:relative;
+    top:250px;
+    left:0;
+    text-align: center;
+    
 }
 
 </style>
@@ -127,6 +147,9 @@ input{
  <div class="gobbie">
     <p id="goblinSpeak">Gobbie thinks uplander is hecking poggers!</p>
     <!-- <img src="cat.png"> -->
+ </div>
+ <div class="footer">
+    <p id="credits">Credits: Cornelia Pixel by Yosituna </p>
  </div>
 
 
@@ -199,8 +222,12 @@ input{
         calculate();
     }
 
+    function giveCredits(){
+        const creditsLine = document.getElementById("credits")
+        creditsLine.innerHTML = creditsLine.innerHTML.replaceAll(/Cornelia Pixel/gi,"<a href=\"https://fontstruct.com/fontstructions/show/2329508/coneria-pixel\"> $&</a>")
+    }
     disableInput();
-    goblinSpeakFun()
+    giveCredits();
 </script>
 
 </body>
