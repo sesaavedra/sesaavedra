@@ -3,115 +3,7 @@
 <head>
 <title>Item Level Calculator</title>
 <link rel="icon" type="image/x-icon" href="favicon.ico">
-
-<style>
-@font-face {
-  font-family: myFonts;
-  src: url(coneria-pixel.ttf);
-}
-
-h1,h2{
-color: rgb(255, 255, 255);
-text-align: center;
-font-family:myFonts;
-font-size: 15px;
-font-weight: normal;
-background-image: linear-gradient(rgb(0, 38, 255),#130b88);
-border: solid;
-border-width: 2.5px;
-border-color: white;
-border-radius: 3px;
-width: 700px;
-margin-left: auto;
-margin-right:auto;
-padding-top: 50x;
-
-}
-body{
-    background-image:linear-gradient(rgb(0, 38, 255), #0b0466);
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-}
-label{
-    font-family: myFonts;
-    font-size: 15px;
-    font-weight: normal;
-    color:white;
-
-display: inline-block;
-  width: 140px;
-  padding-right: 10px;
-  text-align: right;
-  margin-left: auto;
-  margin-right:auto;
-}
-/* input related stuff Start */
-input{
-    color: white;
-    text-align: right;
-    font-family: myFonts;
-    width:125px;
-    background-color: #ffffff00;
-    border: solid;
-    border-radius: 4px;
-    margin-left: auto;
-    margin-right:auto;
-}
-
-input[disabled]
-{
-    background-color: #ffffff48;
-    
-}
-
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-/* Firefox */
-input[type=number] {
-  -moz-appearance: textfield;
-}
-
-/* input related stuff end */
-
-.calc{
-    font-family: myFonts;
-    font-size: 25px;
-    text-align:center;
-    color:white;
-}
-
-.align{
-    display: grid;
-    grid-template-columns: auto auto auto auto;
-    grid-template-rows: auto auto auto auto;
-    justify-content:center;
-    padding: 15px 0px 0px 0px;
-    
-}
-
-.gobbie{
-    color:white;
-    font-family: myFonts;
-    display:grid;
-    grid-template-columns: auto auto;
-    justify-content: center;
-}
-.footer{
-    color: white;
-    font-family: myFonts;
-    font-size: 10px;
-    font-weight: normal;
-    position:relative;
-    top:250px;
-    left:0;
-    text-align: center;
-    
-}
-
-</style>
+<link rel="stylesheet" href="style.css">
 
 
 </head>
@@ -131,7 +23,7 @@ input[type=number] {
  <label class="inputleft">Main Weapon</label> <!-- Weapons-->
  <input type="number" placeholder="Item Level" id="main" oninput="calculate()">
  <label class="inputRight">Secondary</label>
- <input type="number" placeholder="Item Level" id="secondary" oninput="calculate()">
+ <input type="number" placeholder="Item Level" id="secondary" disabled =true oninput="calculate()">
 </div>
 
 
@@ -184,82 +76,6 @@ input[type=number] {
  </div>
 
 
-
-<script>
-
-
-    function calculate()
-    {
-
-
-        let items = [
-        document.getElementById("main").value,
-        document.getElementById("secondary").value,
-        document.getElementById("head").value,
-        document.getElementById("earrings").value,
-        document.getElementById("chest").value,
-        document.getElementById("necklace").value,
-        document.getElementById("hands").value,
-        document.getElementById("bracelets").value,
-        document.getElementById("legs").value,
-        document.getElementById("ring_1").value,
-        document.getElementById("shoes").value,
-        document.getElementById("ring_2").value
-    ];
-        let checkbox=document.getElementById("paladin");
-        let originalValue=items[1];
-
-        if(checkbox.checked===true)
-        {
-            items[1]=originalValue;
-        }
-        else{
-            
-            items[1]=items[0];
-        }
-
-
-        let sum=0;
-        let avg=0;
-        let min=1;
-        let max=0;
-
-        for(let i=0;i<items.length;i++)
-        {
-            items[i]=Number(items[i]);
-            sum+=items[i];
-
-        }
-
-
-        avg= sum/(items.length);
-        x=avg
-        document.getElementById("calculation").innerHTML=avg;
-    }
-
-    
-    function disableInput(){
-        let checkbox=document.getElementById("paladin");
-
-        if(checkbox.checked===true)
-        {
-            document.getElementById("secondary").disabled=false;
-            
-        }
-        else{
-            
-            document.getElementById("secondary").disabled=true;
-        }
-        calculate();
-    }
-
-    function giveCredits(){
-        const creditsLine = document.getElementById("credits")
-        creditsLine.innerHTML = creditsLine.innerHTML.replaceAll(/Cornelia Pixel/gi,"<a href=\"https://fontstruct.com/fontstructions/show/2329508/coneria-pixel\"> $&</a>")
-    }
-    disableInput();
-    giveCredits();
-</script>
-
+<script src="script.js"></script>
 </body>
 </html>
